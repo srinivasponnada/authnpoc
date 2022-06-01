@@ -1,4 +1,6 @@
+import 'package:authnpoc/stepperex.dart';
 import 'package:authnpoc/takepicture.dart';
+import 'package:authnpoc/uploadpicture.dart';
 import 'package:authnpoc/widgetb.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +9,8 @@ import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'amplifyconfiguration.dart';
 
 import 'package:amplify_authenticator/amplify_authenticator.dart';
+
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -76,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
     try {
       // Add the following line to add Auth plugin to your app.
       await Amplify.addPlugin(AmplifyAuthCognito());
+      await Amplify.addPlugin(AmplifyStorageS3());
 
       // call Amplify.configure to use the initialized categories in your app
       await Amplify.configure(amplifyconfig);
@@ -116,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
 			home: const Scaffold(
         body: Center(
 				//child: WidgetB(),
-        child: takepicture(),
+        child: stepperex(),
 			  ),
       ),
       ),

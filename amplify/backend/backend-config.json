@@ -26,5 +26,12 @@
         ]
       }
     }
+  },
+  "storage": {
+    "s3authnpoc": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }

@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "authnpoc7e34b6c3": {}
+        "authnpoc7e34b6c3": {},
+        "true": {}
       }
     }
   }
