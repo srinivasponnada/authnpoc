@@ -1,3 +1,4 @@
+import 'package:authnpoc/takepicture.dart';
 import 'package:authnpoc/widgetb.dart';
 import 'package:flutter/material.dart';
 
@@ -114,7 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
 			builder: Authenticator.builder(),
 			home: const Scaffold(
         body: Center(
-				child: WidgetB(),
+				//child: WidgetB(),
+        child: takepicture(),
 			  ),
       ),
       ),

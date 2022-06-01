@@ -53,13 +53,6 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-Future<bool> _isSignedIn() async {
-    final CognitoAuthSession session =
-        await Amplify.Auth.fetchAuthSession() as CognitoAuthSession;
-    print('_isSignedIn: ${session.isSignedIn}');
-    return session.isSignedIn;
-}
-
 class _MyHomePageState extends State<MyHomePage> {
 
   var userSession = null;
@@ -87,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  int _counter = 0;
+
 
   void _incrementCounter() async {
     try {
@@ -95,14 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
     } on AuthException catch (e) {
       print(e.message);
     }
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+
   }
 
   @override
@@ -144,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              'Hello!',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
