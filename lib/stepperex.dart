@@ -7,7 +7,7 @@ import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'dart:io';
+import 'dart:math';
 
 void main() {
   runApp(const stepperex());
@@ -87,6 +87,14 @@ class _StepperExState extends State<stepperex> {
       imageFile = File(pickedFile!.path);
     });
 
+    const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    Random _rnd = Random();
+
+    String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+        length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+
+
+
     final exampleString = 'Example file contents';
     final tempDir = await getTemporaryDirectory();
     final exampleFile = File(tempDir.path + '/example.txt')
@@ -98,7 +106,7 @@ class _StepperExState extends State<stepperex> {
     try {
       final UploadFileResult result = await Amplify.Storage.uploadFile(
           local: exampleFile,
-          key: 'ExampleKey4',
+          key: getRandomString(10),
           onProgress: (progress) {
             print("Fraction completed: " + progress.getFractionCompleted().toString());
           }
@@ -158,6 +166,15 @@ class _StepperExState extends State<stepperex> {
           title: Text('Address'),
           content: Column(
             children: <Widget>[
+              ListTile(
+                leading: const Icon(Icons.phone),
+                title: new TextField(
+                  decoration: new InputDecoration(
+                    hintText: "Phone",
+                  ),
+                ),
+              ),
+              Text('Instructions...'),
               OutlinedButton(onPressed: getImageFromCamera, child: Text('Take a Picture'))
               //takepicture(),
               /*TextFormField(

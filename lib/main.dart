@@ -1,3 +1,7 @@
+import 'package:authnpoc/example_app.dart';
+import 'package:authnpoc/fileupload.dart';
+import 'package:authnpoc/flutter_form_bloc.dart';
+import 'package:authnpoc/joblist.dart';
 import 'package:authnpoc/stepperex.dart';
 import 'package:authnpoc/takepicture.dart';
 import 'package:authnpoc/uploadpicture.dart';
@@ -121,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
 			home: const Scaffold(
         body: Center(
 				//child: WidgetB(),
-        child: stepperex(),
+        child: JobList(),
 			  ),
       ),
       ),
