@@ -49,6 +49,7 @@ dev_dependencies:
   amplify_flutter: ^0.5.0
   amplify_auth_cognito: ^0.5.0
   amplify_storage_s3: ^0.5.0
+  amplify_datastore: ^0.5.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

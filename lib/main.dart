@@ -2,6 +2,7 @@ import 'package:authnpoc/example_app.dart';
 import 'package:authnpoc/fileupload.dart';
 import 'package:authnpoc/flutter_form_bloc.dart';
 import 'package:authnpoc/joblist.dart';
+import 'package:authnpoc/manageJobs.dart';
 import 'package:authnpoc/stepperex.dart';
 import 'package:authnpoc/takepicture.dart';
 import 'package:authnpoc/uploadpicture.dart';
@@ -12,9 +13,12 @@ import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'amplifyconfiguration.dart';
 
+import 'models/ModelProvider.dart';
 import 'package:amplify_authenticator/amplify_authenticator.dart';
 
 import 'package:amplify_storage_s3/amplify_storage_s3.dart';
+
+import 'package:amplify_datastore/amplify_datastore.dart';
 
 void main() {
   runApp(const MyApp());
@@ -86,6 +90,10 @@ class _MyHomePageState extends State<MyHomePage> {
       await Amplify.addPlugin(AmplifyAuthCognito());
       await Amplify.addPlugin(AmplifyStorageS3());
 
+      final AmplifyDataStore _dataStorePlugin = AmplifyDataStore(modelProvider: ModelProvider.instance);
+
+      await Amplify.addPlugin(_dataStorePlugin);
+
       // call Amplify.configure to use the initialized categories in your app
       await Amplify.configure(amplifyconfig);
 
@@ -125,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
 			home: const Scaffold(
         body: Center(
 				//child: WidgetB(),
-        child: JobList(),
+        child: MyJobsApp(),
 			  ),
       ),
       ),
