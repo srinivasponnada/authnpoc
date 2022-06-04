@@ -1,0 +1,18 @@
+type Job @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  jobID: ID
+  jobSummary: String
+  jobInstructions: String
+  customerFirst: String
+  customerLast: String
+  propertyAddress: String
+  propertyCity: String
+  propertyState: String
+  propertyZip: String
+  appointmentStartLocalTime: AWSDateTime
+  appointmentEndLocalTime: AWSDateTime
+  dispatchedBy: String
+  quotedRate: Float
+  clientName: String
+  customerMobilePhone: AWSPhone
+}
